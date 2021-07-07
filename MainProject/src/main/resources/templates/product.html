@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<style>
+h1 {text-align: center;}
+div {text-align: center;}
+</style>
 <head>
     <meta charset="ISO-8859-1">
     <title>Products</title>
@@ -27,12 +30,20 @@
         <tr th:each="product : ${productList}">
             <td th:text="${product.productId}"></td>
             <td th:text="${product.productName}"></td>
-            <td> <a th:href="@{/showProductFormForUpdate/{productId}(id=${product.productId})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deleteProduct/{productId}(id=${product.productId})}" class="btn btn-danger">Delete</a>
+            <td> <a th:href="@{/showProductFormForUpdate/{id}(id=${product.productId})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteProduct/{id}(id=${product.productId})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/mainMenu}">Back to Menu</a>
+</div>
+<div align="center">
+
+    <form method="get" action="/logout">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+
 </div>
 </body>
 

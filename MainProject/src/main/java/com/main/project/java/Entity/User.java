@@ -23,7 +23,6 @@ public class User {
     @Column(name = "user_phone")
     private long userPhoneNumber;
 
-
     public int getUserId() {
         return userId;
     }

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<style>
+h1 {text-align: center;}
+div {text-align: center;}
+</style>
 <head>
   <meta charset="ISO-8859-1">
   <title>WELCOME</title>
@@ -10,13 +13,15 @@
 
 </head>
 <body>
+<br><br>
 <h1>WELCOME TO THE SHOP</h1>
 
-
+<br><br><br><br>
 <div class="container my-2">
   <td><a th:href="@{/user}" class="btn btn-primary">USER</a>
     <a th:href="@{/product}" class="btn btn-success">PRODUCT</a>
     <a th:href="@{/show}" class="btn btn-danger">CART</a>
+    <a th:href="@{/logout}" class="btn btn-secondary">LOGOUT</a>
   </td>
 </div>
 </body>

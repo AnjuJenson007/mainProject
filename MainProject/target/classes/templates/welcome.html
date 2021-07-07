@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<style>
+h1 {text-align: center;}
+div {text-align: center;}
+</style>
 <head>
     <meta charset="ISO-8859-1">
     <title></title>
@@ -10,13 +13,18 @@
 
 </head>
 <body>
-<h1>WELCOME</h1>
-<p> Login to get access</p>
+<br><br>
+<div>
+    <h1> WELCOME </h1>
 
-<div class="container my-2">
-    <td><a th:href="@{/showNewUserForm}" class="btn btn-primary">Register</a>
-        <a th:href="@{/mainMenu}" class="btn btn-success">login</a>
+    <br><br>
+    <div class="container my-2">
+        <td><a th:href="@{/showNewUserForm}" class="btn btn-primary">Register</a>
+    </div>
+    <div class="container my-2">
+        <td> <a th:href="@{/mainMenu}" class="btn btn-success">Login</a>
 
+    </div>
 </div>
 </body>
 </html>

@@ -12,9 +12,17 @@ public class Cart {
     @Column(name="card_id")
     private int cartId;
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name="user_id")
-    private Set<User> user;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @ManyToMany
     @JoinColumn(name="product_id")
@@ -28,13 +36,6 @@ public class Cart {
         this.cartId = cartId;
     }
 
-    public Set<User> getUser() {
-        return user;
-    }
-
-    public void setUser(Set<User> user) {
-        this.user = user;
-    }
 
     public Set<Product> getProduct() {
         return product;

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<style>
+h1 {text-align: center;}
+div {text-align: center;}
+</style>
 <head>
     <meta charset="ISO-8859-1">
     <title>Users</title>
@@ -10,6 +13,7 @@
 
 </head>
 <body>
+
 
 <div class="container my-2">
     <h1>User List</h1>
@@ -42,6 +46,15 @@
 
         </tbody>
     </table>
+    <a th:href="@{/mainMenu}">Back to Menu</a>
+</div>
+<br>
+<div align="center">
+
+    <form method="get" action="/logout">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+
 </div>
 </body>
 

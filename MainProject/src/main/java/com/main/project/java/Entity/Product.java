@@ -14,9 +14,6 @@ public class Product  {
     @Column(name = "product_name")
     private String productName;
 
-
-
-
     public Product() {
 
     }

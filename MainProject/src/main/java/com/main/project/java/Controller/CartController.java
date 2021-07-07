@@ -7,6 +7,8 @@ import com.main.project.java.Repository.CartRepository;
 import com.main.project.java.Repository.ProductRepository;
 import com.main.project.java.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 @Controller
 public class CartController {
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -26,11 +29,15 @@ public class CartController {
     @GetMapping("/show")
     public String show(Model model) {
         Cart cart = new Cart();
-        List<User> user = userRepository.findAll();
         List<Product> product = productRepository.findAll();
-        model.addAttribute("productList", product);
-        model.addAttribute("userList", user);
-        model.addAttribute("cart", cart);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String userName = ((UserDetails) principal).getUsername();
+            User user = userRepository.findByEmail(userName);
+            model.addAttribute("productList", product);
+            model.addAttribute("userList", user);
+            model.addAttribute("cart", cart);
+        }
         return "cartItem";
     }
 
