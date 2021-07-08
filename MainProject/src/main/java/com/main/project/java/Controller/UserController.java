@@ -32,7 +32,7 @@ public class UserController {
     public String showNewUserForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "AddUser";
+        return "addUser";
     }
 
     @PostMapping("/saveUser")
@@ -48,7 +48,7 @@ public class UserController {
     public String showUserFormForUpdate(@PathVariable(value = "id") int userId, Model model) {
         User user = userRepository.findById(userId).get();
         model.addAttribute("user", user);
-        return "UpdateUser";
+        return "updateUser";
     }
 
     @GetMapping("/deleteUser/{id}")

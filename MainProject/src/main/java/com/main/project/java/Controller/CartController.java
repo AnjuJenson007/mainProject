@@ -38,7 +38,7 @@ public class CartController {
             model.addAttribute("userList", user);
             model.addAttribute("cart", cart);
         }
-        return "cartItem";
+        return "addCart";
     }
 
     @PostMapping("/saveItems")
@@ -57,6 +57,18 @@ public class CartController {
         model.addAttribute("cartList", cartList);
         return "cart";
     }
+
+    @GetMapping("/showCartFormForUpdate/{id}")
+    public String showCartFormForUpdate(@PathVariable(value = "id") int cartId, Model model) {
+        Cart cart = cartRepository.findById(cartId).get();
+        List<User> user = userRepository.findAll();
+        List<Product> product = productRepository.findAll();
+        model.addAttribute("product", product);
+        model.addAttribute("user", user);
+        model.addAttribute("cart", cart);
+        return "updateCart";
+    }
+
     @GetMapping("/deleteCart/{id}")
     public String deleteCart(@PathVariable(value = "id") int cartId) {
         this.cartRepository.deleteById(cartId);

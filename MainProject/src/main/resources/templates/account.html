@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <style>
- h1 {text-align: center;}
- div {text-align: center;}
+h1 {text-align: center;}
+div {text-align: center;}
 </style>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Cart</title>
+    <title>Account</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -14,32 +14,25 @@
 </head>
 <body>
 <div class="container my-2">
-    <h1>Cart List</h1>
-    <a th:href="@{/show}" class="btn btn-primary btn-sm mb-3"> Add to Cart </a>
+    <h1>Account List</h1>
+    <a th:href="@{/showAccountForm}" class="btn btn-primary btn-sm mb-3"> Add to Account </a>
     <table border="1" class="table table-striped table-responsive-md">
         <thead>
         <tr>
-            <th>Cart</th>
+            <th>Account Id</th>
+            <th>Account Number</th>
             <th>User</th>
-            <th>Product</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="cart : ${cartList}">
-            <td th:text="${cart.cartId}"></td>
-            <td th:text="${cart.user?.userName}"></td>
+        <tr th:each="account:${account}">
+            <td th:text="${account.accountId}"></td>
+            <td th:text="${account.accountNumber}"></td>
+            <td th:text="${account.user?.userName}"></td>
             <td>
-                <table class="table table-striped table-bordered">
-                    <tr th:each="pro : ${cart.product}">
-                        <td th:text="${pro.productName}"></td>
-                    </tr>
-                </table>
-            </td>
-
-            <td>
-                <a th:href="@{/showCartFormForUpdate/{id}(id=${cart.cartId})}" class="btn btn-success">Update</a>
-                <a th:href="@{/deleteCart/{id}(id=${cart.cartId})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/showAccountFormForUpdate/{id}(id=${account.accountId})}" class="btn btn-success">Update</a>
+                <a th:href="@{/deleteAccount/{id}(id=${account.accountId})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
