@@ -26,7 +26,6 @@ div {text-align: center;}
             <th>User Id</th>
             <th>User Name</th>
             <th>User Email</th>
-            <th>User Password</th>
             <th>User Phone</th>
             <th> Actions</th>
         </tr>
@@ -37,7 +36,6 @@ div {text-align: center;}
             <td th:text="${user.userId}"></td>
             <td th:text="${user.userName}"></td>
             <td th:text="${user.userEmail}"></td>
-            <td th:text="${user.userPassword}"></td>
             <td th:text="${user.userPhoneNumber}"></td>
             <td><a th:href="@{/showUserFormForUpdate/{id}(id=${user.userId})}" class="btn btn-success">Update</a>
                 <a th:href="@{/deleteUser/{id}(id=${user.userId})}" class="btn btn-danger">Remove</a>

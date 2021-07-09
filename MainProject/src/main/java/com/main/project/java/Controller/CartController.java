@@ -61,11 +61,15 @@ public class CartController {
     @GetMapping("/showCartFormForUpdate/{id}")
     public String showCartFormForUpdate(@PathVariable(value = "id") int cartId, Model model) {
         Cart cart = cartRepository.findById(cartId).get();
-        List<User> user = userRepository.findAll();
         List<Product> product = productRepository.findAll();
-        model.addAttribute("product", product);
-        model.addAttribute("user", user);
-        model.addAttribute("cart", cart);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String userName = ((UserDetails) principal).getUsername();
+            User user = userRepository.findByEmail(userName);
+            model.addAttribute("product", product);
+            model.addAttribute("user", user);
+            model.addAttribute("cart", cart);
+        }
         return "updateCart";
     }
 
